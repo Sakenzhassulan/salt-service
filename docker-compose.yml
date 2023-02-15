@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  salt:
+    container_name: salt
+    hostname: salt
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+      args:
+        - SERVICE=salt
+    networks:
+      - testnet
+    ports:
+      - "8040:8040"
+
+networks:
+  testnet:
+    external: true
